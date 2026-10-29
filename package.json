@@ -1,0 +1,16 @@
+{
+  "name": "destiny-master",
+  "version": "0.1.0",
+  "private": true,
+  "description": "逆命六十四：用手牌改写六爻的国风策略网页游戏",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs --preview"
+  }
+}

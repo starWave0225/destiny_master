@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="theme-color" content="#101916"><meta name="description" content="手中一张牌，改写六十四种命运。国风卦象组牌游戏，开启你的寒门赶考之旅。">
+ <title>逆命六十四 · 寒门赶考</title>
+ <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2317221c'/%3E%3Ctext x='32' y='47' text-anchor='middle' fill='%23d5b579' font-size='46'%3E易%3C/text%3E%3C/svg%3E">
+ <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+ <div class="ambient" aria-hidden="true"></div>
+ <div class="app-shell">
+  <header class="masthead">
+   <a class="brand" href="./" aria-label="逆命六十四首页"><span class="seal">逆<br>命</span><span><span class="brand-title">逆命六十四<span class="edition">试玩篇</span></span><span class="brand-en">THE SIXTY-FOUR FATES</span></span></a>
+   <div class="header-center"><span class="tiny-spark">✧</span> 天行有常，命由我易 <span class="tiny-spark">✧</span></div>
+   <nav class="header-actions" aria-label="游戏工具"><button id="sound" class="icon-btn" title="开启音效" aria-label="开启音效">♪<span>音效关</span></button><button id="help" class="text-btn">玩法 <span>?</span></button></nav>
+  </header>
+  <section class="journey" aria-label="当前命途">
+   <div class="journey-title"><span class="eyebrow">此 生 命 途</span><h1>寒门赶考</h1></div>
+   <div class="route" id="route"></div>
+   <div class="resources"><div class="resource hp"><span class="resource-icon">✥</span><span><small>气数</small><strong id="hp">12<em>/12</em></strong></span></div><div class="resource"><span class="coin-icon"></span><span><small>盘缠</small><strong id="money">6<em>文</em></strong></span></div><div class="resource debt"><span class="resource-icon">◈</span><span><small>因果</small><strong id="debt">0</strong></span></div></div>
+  </section>
+  <main>
+   <section class="fate-board" aria-label="改命棋盘">
+    <div class="board-landscape" aria-hidden="true">
+     <svg viewBox="0 0 1400 500" preserveAspectRatio="xMidYMax slice"><defs><linearGradient id="mountain" x2="0" y2="1"><stop stop-color="#53684e" stop-opacity=".22"/><stop offset="1" stop-color="#233c2d" stop-opacity=".03"/></linearGradient><linearGradient id="moon" x2="1" y2="1"><stop stop-color="#e8d8a6" stop-opacity=".24"/><stop offset="1" stop-color="#9bab83" stop-opacity=".02"/></linearGradient></defs><circle cx="1100" cy="133" r="61" fill="url(#moon)"/><path d="M0 330 95 230 132 268 223 152 285 249 350 201 447 324 530 290 630 362 740 233 814 285 890 149 948 254 1018 200 1118 306 1220 187 1330 305 1400 251V500H0Z" fill="url(#mountain)"/><path d="m0 403 150-73 100 62 150-41 150 85 170-39 140 44 160-64 130 30 130-40 120 42v91H0Z" fill="#324a39" opacity=".12"/><g stroke="#aeb992" stroke-width="1" opacity=".13" fill="none"><path d="M920 416q140-16 350 0M975 432q115-12 280-1M1050 448h170"/><path d="m1110 404 12 8h56l14-8m-52 0v-46m2 4 28 29h-28"/></g><g fill="#c5be90" opacity=".17"><path d="m1000 150 7-3 8 3-8-1Zm30-12 5-3 7 3-7-1Z"/></g></svg>
+    </div>
+    <div class="event-panel">
+     <span class="eyebrow" id="scene-place">第一劫 · 渡江</span>
+     <h2 id="scene-name">风雨渡口</h2>
+     <p class="scene-flavor" id="scene-flavor"></p>
+     <p class="scene-text" id="scene-text"></p>
+     <div class="challenge"><div class="challenge-label"><span id="goal-label"></span><span id="round-label"></span></div><div class="progress-track"><div id="progress-fill"></div><div class="progress-preview" id="progress-preview"></div></div><div class="challenge-numbers"><strong id="progress-number"></strong><span id="goal-note"></span></div></div>
+     <div class="omen"><span class="omen-symbol">谶</span><div><span class="eyebrow">天机预示</span><p id="omen-text"></p></div></div>
+    </div>
+    <div class="hex-panel">
+     <div class="hex-heading"><span class="eyebrow">当 下 命 卦</span><div class="hex-title"><span id="hex-name">水雷屯</span><span class="hex-status" id="hex-status">待变</span></div></div>
+     <div class="hex-circle" aria-hidden="true"><span>☯</span></div>
+     <div class="hex-lines" id="hex-lines" aria-label="六爻，点击以施展已选手牌"></div>
+     <div class="hex-caption"><span id="upper-label"></span><span class="caption-divider"></span><span id="lower-label"></span></div>
+     <div class="target-prompt" id="target-prompt" aria-live="polite">选一张手牌，开始改写命卦</div>
+    </div>
+    <aside class="insight-panel">
+     <div class="panel-title"><span class="eyebrow">卦 象 之 力</span><button class="plain-btn" id="trigrams-help" aria-label="查看八卦能力">ⓘ</button></div>
+     <div id="attributes" class="attributes"></div>
+     <div id="hex-effect" class="hex-effect"></div>
+     <div class="insight-divider"></div>
+     <div class="panel-title"><span class="eyebrow">命 途 手 记</span><button class="plain-btn" id="journal-open">展开 ↗</button></div>
+     <div id="journal" class="journal"></div>
+    </aside>
+   </section>
+   <section class="play-controls" aria-label="本轮行动">
+    <div class="energy"><span class="eyebrow">灵 力</span><div class="energy-orbs" id="energy"></div><span id="energy-num"></span><span class="control-separator"></span><span class="deck-count" id="deck-count"></span></div>
+    <div class="control-buttons"><button class="text-btn" id="undo" disabled>↶ 撤回</button><button class="text-btn" id="redraw">⟳ 换牌 <small>1 文</small></button><button id="settle" class="settle-btn">顺势应劫 <span>→</span></button></div>
+   </section>
+   <section class="hand-section" aria-label="手牌区"><div class="hand-heading"><span class="eyebrow">手 中 之 术</span><span id="hand-hint">点击选牌，再点爻位 · 悬停预览变化</span><span class="card-counter" id="card-counter"></span></div><div id="hand" class="hand"></div></section>
+  </main>
+  <footer><span>一念起，万象生。</span><span>卦象文化启发 · 原创策略玩法 <i>✦</i> DEMO 0.1</span><button class="plain-btn" id="restart">重启命途 ↗</button></footer>
+ </div>
+ <div id="toast" class="toast" role="status"></div>
+ <dialog id="help-dialog" class="modal"><button class="modal-close" data-close aria-label="关闭玩法说明">×</button><span class="eyebrow">初 入 命 途</span><h2>命由我易</h2><p class="modal-intro">你是一名进京赶考的书生。手中有牌，眼前有卦，前方有三道命劫。</p><div class="help-steps"><div><b>壹</b><p><strong>选牌 · 改爻</strong>点击手牌，再点击中央亮起的爻。阴爻断开，阳爻相连；上三爻为上卦，下三爻为下卦。</p></div><div><b>贰</b><p><strong>观卦 · 蓄势</strong>八种基础卦各有能力，两卦能力相加。上下相同的纯卦，三项能力各加 1。把本劫需要的能力尽量提高。</p></div><div><b>叁</b><p><strong>应劫 · 前行</strong>每劫两轮，点击「顺势应劫」将当前能力计入进度。两轮合计达到 12 即破劫。未达标会损失差额一半的气数，向上取整。</p></div></div><div class="help-note">每轮有 3 灵力。借运可多得 2 灵力，但下次应劫扣 2 气数。留意预示的天变，定爻可以抵挡它。破劫可获 2 文盘缠、恢复 1 气数。</div><button class="gold-btn" data-close>明白了，起卦 →</button></dialog>
+ <dialog id="reference-dialog" class="modal reference-modal"><button class="modal-close" data-close aria-label="关闭八卦能力">×</button><span class="eyebrow">八 卦 为 基 · 六 十 四 变</span><h2>识卦</h2><p class="modal-intro">当前能力 = 上卦 + 下卦；纯卦额外三项各 +1。</p><div id="reference-table"></div><p class="fine-print">能力数值为游戏设计，卦名依上下卦组合呈现。</p></dialog>
+ <dialog id="journal-dialog" class="modal"><button class="modal-close" data-close aria-label="关闭命途手记">×</button><span class="eyebrow">一 路 所 历</span><h2>命途手记</h2><div id="full-journal" class="full-journal"></div></dialog>
+ <dialog id="result-dialog" class="modal result-modal"></dialog>
+ <dialog id="restart-dialog" class="modal compact-modal"><button class="modal-close" data-close aria-label="取消重新开始">×</button><span class="eyebrow">重 启 命 途</span><h2>再问一次天命</h2><p class="modal-intro">这会结束当前命途，从第一劫重新出发。</p><button id="confirm-restart" class="gold-btn">重新起卦 →</button></dialog>
+ <script type="module" src="./game.mjs"></script>
+</body>
+</html>
